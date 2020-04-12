@@ -1,0 +1,25 @@
+<div class="container">
+    <div [hidden]="loggedIn" style="margin-top: 40px;">
+        <mat-grid-list cols="6" rowHeight="400px">
+            <mat-grid-tile [colspan]="1"></mat-grid-tile>
+            <mat-grid-tile [colspan]="4">
+                <form (ngSubmit)="onSubmit()">
+                    <mat-form-field class="full-width">
+                        <input matInput  type="text" [(ngModel)]="credential.username"
+                            required placeholder="Username" name="username">
+                    </mat-form-field>
+                    <mat-form-field class="full-width">
+                        <input matInput  type="password" [(ngModel)]="credential.password"
+                            required placeholder="Password" name="password">
+                    </mat-form-field>
+                    <button mat-raised-button type="submit" color="primary">Login</button>
+
+                </form>
+            </mat-grid-tile>
+        </mat-grid-list>
+
+    </div>
+    <div [hidden]="!loggedIn">
+        <h2>You have Logged In!</h2>
+    </div>
+</div>

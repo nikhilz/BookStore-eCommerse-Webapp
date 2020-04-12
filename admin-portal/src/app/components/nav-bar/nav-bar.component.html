@@ -2,9 +2,8 @@
     <h1> <span>ADMIN PORTAL</span></h1>
     <span class="right-align"></span>
         <span [hidden]="!loggedIn" ><a mat-button>View Book List</a></span>
-        <span [hidden]="!loggedIn" ><a mat-button>Add a Book</a></span>
-        <span [hidden]="!loggedIn" ><a mat-button>Logout</a></span>
+        <span [hidden]="!loggedIn" ><a mat-button routerLink="/addNewBook">Add a Book</a></span>
+        <span [hidden]="!loggedIn" ><a mat-button (click)="logout()">Logout</a></span>
    
 </mat-toolbar>
 
-<button mat-raised-button (click)="toggleDisplay()" color="warn">Toggle </button>

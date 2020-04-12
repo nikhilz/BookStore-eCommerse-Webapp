@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav-bar',
@@ -9,12 +11,19 @@ export class NavBarComponent implements OnInit {
 
    loggedIn:boolean = false;
 
-  constructor() { }
+  constructor(private tokenStorage: TokenStorageService,
+    private router:Router) { }
 
-  toggleDisplay(){
-    this.loggedIn = !this.loggedIn ;
-  }
+ 
   ngOnInit(): void {
+    this.loggedIn = !!this.tokenStorage.getToken();
+  }
+
+  logout() {
+    this.tokenStorage.signout();
+    this.loggedIn = false;
+    this.router.navigate(["/login"]);
+    
   }
 
 }
